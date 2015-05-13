@@ -1,0 +1,11 @@
+GAMEPLAY:
+	Lägga till fler länder.
+	Göra så att spelaren kan välja vilket land dom vill börja som?
+	WinConditions.
+	Olika gamemodes?
+
+SOUND:
+	Harald snackade om viskningar.. Obehagligt, men får se :P
+
+MULTIPLAYER:
+	Dra ner Photon från AssetStore, kolla om jag hittar någon bra info om hur man använder det.

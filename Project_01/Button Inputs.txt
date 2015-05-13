@@ -1,0 +1,10 @@
+W/S = Pitch;
+A/D = Roll;
+Q/E = Tilt;
+F = HUD/Tactical camera;
+Left Shift = Accelerate;
+Left Control = Decelerate / Reverse;
+B = Red light;
+N = Blue light;
+M = Green light;
+F1 = First/Third person;

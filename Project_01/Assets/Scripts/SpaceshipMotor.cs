@@ -8,6 +8,7 @@ public class SpaceshipMotor : MonoBehaviour {
 	float acceleration = 0.25f;
 	float maxSpeed = 100;
 	int maxFuel = 15000;
+	float fuelPerSpeed = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +22,9 @@ public class SpaceshipMotor : MonoBehaviour {
 		if (speed < -maxSpeed / 3)
 			speed = -maxSpeed / 3;
 		if (speed > 0)
-			fuel -= speed / 100;
+			fuel -= speed / fuelPerSpeed;
 		else
-			fuel += speed / 100;
+			fuel += speed / fuelPerSpeed;
 		transform.position += transform.forward * speed * Time.deltaTime;
 	}
 

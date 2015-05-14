@@ -3,12 +3,15 @@ using System.Collections;
 
 public class SpaceshipMotor : MonoBehaviour {
 
+	public Vector3 curRot;
+	Vector3 prevPos;
 	public float speed;
 	public float fuel;
 	float acceleration = 0.25f;
-	float maxSpeed = 100;
+	float maxSpeed = 50;
 	int maxFuel = 15000;
-	float fuelPerSpeed = 100;
+	float turnSpeed = 30;
+	float speedPerFuel = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -17,30 +20,26 @@ public class SpaceshipMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (speed > maxSpeed)
-			speed = maxSpeed;
-		if (speed < -maxSpeed / 3)
-			speed = -maxSpeed / 3;
-		if (speed > 0)
-			fuel -= speed / fuelPerSpeed;
-		else
-			fuel += speed / fuelPerSpeed;
-		transform.position += transform.forward * speed * Time.deltaTime;
+		if (speed < 2 && speed > -2 && Input.GetKeyDown (KeyCode.X))
+			speed = 0;
+		curRot = (transform.position - prevPos) / Time.deltaTime;
+		prevPos = transform.position;
+//		transform.position += transform.forward * speed * Time.deltaTime;
+		GetComponent<Rigidbody> ().transform.position += transform.forward * speed * Time.deltaTime;
+		fuel -= speed / speedPerFuel;
 	}
 
 	public void Thrust(float value){
-		if(speed < maxSpeed && (value * acceleration) > 0)
-			speed += value * acceleration;
-		if ((value * acceleration) < 0)
-			speed += value * acceleration;
+		if(value > 0 && speed < maxSpeed)
+			speed += value;
+		if (value < 0 && speed > -maxSpeed / 3)
+			speed += value;
 	}
 
 	public void Rotate(Vector3 rotation){
-		if (speed > 15) {
-			transform.Rotate(new Vector3((rotation.x / (speed / 20)), rotation.y / (speed / 20), rotation.z));
-		}
-		else
-			transform.Rotate (rotation);
+//		transform.Rotate (rotation);
+		Quaternion deltaRotation = Quaternion.Euler (rotation * turnSpeed * Time.deltaTime);
+		GetComponent<Rigidbody> ().MoveRotation ((GetComponent<Rigidbody>().rotation * deltaRotation));
 	}
 
 	public float GetMaxSpeed(){
@@ -49,6 +48,14 @@ public class SpaceshipMotor : MonoBehaviour {
 
 	public void SetMaxSpeed(float value){
 		maxSpeed = value;
+	}
+	
+	public float GetSpeed(){
+		return speed;
+	}
+	
+	public void SetSpeed(float value){
+		speed = value;
 	}
 
 	public int GetMaxFuel(){

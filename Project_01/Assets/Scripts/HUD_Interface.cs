@@ -4,25 +4,30 @@ using UnityEngine.UI;
 
 public class HUD_Interface : MonoBehaviour {
 
+	GameObject[] locations;
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		switch (name) {
+		case "FuelText":
+			GetComponent<Text>().text = "Fuel : " + GetComponentInParent<SpaceshipMotor>().fuel.ToString("F1");
+			break;
 		case "SpeedText":
-			GetComponent<Text>().text = "Speed : " + GetComponentInParent<SpaceshipMotor>().speed.ToString("F1") + "   " +
-				"Fuel : " + GetComponentInParent<SpaceshipMotor>().fuel.ToString("F1");
+			GetComponent<Text>().text = "X = " + transform.rotation.eulerAngles.x.ToString("F1") + "\n" + 
+				"Y = " + transform.rotation.eulerAngles.y.ToString("F1") + "\n" +
+					"Z = " + transform.rotation.eulerAngles.z.ToString("F1");
 			break;
-		case "HUD_Speed":
-			if(GetComponentInParent<SpaceshipMotor>().speed > 0){
-				GetComponent<RectTransform>().localScale = new Vector2(1, 0 + (GetComponentInParent<SpaceshipMotor>().speed / GetComponentInParent<SpaceshipMotor>().GetMaxSpeed()) / 2.5f);
-				GetComponent<RectTransform>().localPosition = new Vector2(0.38f,-0.32f + GetComponentInParent<SpaceshipMotor>().speed / 720);
-			}else{
-				GetComponent<RectTransform>().localScale = new Vector2(1, 0 - (GetComponentInParent<SpaceshipMotor>().speed / GetComponentInParent<SpaceshipMotor>().GetMaxSpeed()) / 2.5f);
-				GetComponent<RectTransform>().localPosition = new Vector2(0.38f,-0.32f + GetComponentInParent<SpaceshipMotor>().speed / 680);
-			}
+		case "MapText":
+			locations = GameObject.FindGameObjectsWithTag("Planet");
+			GetComponent<Text>().text = "Planet A: " + (locations[0].transform.position - transform.position) + "\n" + "Planet B: " + (locations[1].transform.position - transform.position) + "\n" +
+				"Planet C: " + (locations[2].transform.position - transform.position) + "\n" + "Planet D: " + (locations[3].transform.position - transform.position);
 			break;
-		case "HUD_Fuel":
-			GetComponent<RectTransform>().localScale = new Vector2(1, 0 + (GetComponentInParent<SpaceshipMotor>().fuel / GetComponentInParent<SpaceshipMotor>().GetMaxFuel()) / 2.5f);
-			GetComponent<RectTransform>().localPosition = new Vector2(0.424f, -0.32f + (GetComponentInParent<SpaceshipMotor>().fuel / 53000) / 2);
+		case "CommText":
+			GetComponent<Text>().text = "Fuel : " + GetComponentInParent<SpaceshipMotor>().fuel.ToString("F1") + "\n" + "Shields : " + "1200/1200" + "\n" +
+				"Speed : " + GetComponentInParent<SpaceshipMotor>().speed.ToString("F1") + "\n"
+					+ "X : " + GetComponentInParent<SpaceshipMotor>().curRot.x.ToString("F1") + "\n"
+					+ "Y : " + GetComponentInParent<SpaceshipMotor>().curRot.y.ToString("F1") + "\n"
+					+ "Z : " + GetComponentInParent<SpaceshipMotor>().curRot.z.ToString("F1");
 			break;
 		}
 	}

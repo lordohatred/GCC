@@ -11,7 +11,6 @@ public class MouseLook : MonoBehaviour {
 	bool freeLook;
 	Animator anim;
 	bool isUp = true;
-	public bool isCharacter;
 
 	// Use this for initialization
 	void Start () {
@@ -20,8 +19,8 @@ public class MouseLook : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (!GetComponentInParent<PlayerController> ().IsOnFoot () && !isCharacter) {
-			if (Input.GetKeyDown (KeyCode.F))
+		if (!GetComponentInParent<PlayerController> ().IsOnFoot ()) {
+			if (Input.GetKeyDown (KeyCode.T))
 				isUp = !isUp;
 			if (isUp)
 				anim.SetBool ("IsUp", true);
@@ -51,20 +50,9 @@ public class MouseLook : MonoBehaviour {
 				mouseLook.y = 0;
 				transform.rotation = GameObject.Find ("Player").transform.rotation;
 			}
-			if (GetComponentInParent<SpaceshipMotor> ().speed > 0 && name == "Main Camera")
-				GetComponent<Camera> ().fieldOfView = 60 + GetComponentInParent<SpaceshipMotor> ().speed / 5;
-		}
-		if (GetComponentInParent<PlayerController> ().IsOnFoot () && isCharacter) {
-			if (lookAxis) {
-				mouseLook.y += Input.GetAxis ("Mouse Y") * (sensitivity / 2);
-				mouseLook.x = 0;
-				mouseLook.y = Mathf.Clamp (mouseLook.y, -75, 75);
-				transform.localEulerAngles = new Vector3 (-mouseLook.y, transform.localEulerAngles.y, 0);
-			}
-			if(!lookAxis){
-				mouseLook.y = 0;
-				mouseLook.x = Input.GetAxis("Mouse X") * (sensitivity / 2);
-				transform.Rotate(0,mouseLook.x,0);
+			if(name == "Main Camera"){
+				if(GetComponentInParent<SpaceshipMotor>().GetSpeed() > 0)
+					GetComponent<Camera>().fieldOfView = 60 + GetComponentInParent<SpaceshipMotor>().GetSpeed() / 15;
 			}
 		}
 	}

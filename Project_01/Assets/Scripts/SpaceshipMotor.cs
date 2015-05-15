@@ -12,6 +12,7 @@ public class SpaceshipMotor : MonoBehaviour {
 	int maxFuel = 15000;
 	float turnSpeed = 30;
 	float speedPerFuel = 100;
+	int cargoSpace = 50;
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +21,12 @@ public class SpaceshipMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (speed > maxSpeed)
+			speed = maxSpeed;
 		if (speed < 2 && speed > -2 && Input.GetKeyDown (KeyCode.X))
 			speed = 0;
 		curRot = (transform.position - prevPos) / Time.deltaTime;
 		prevPos = transform.position;
-//		transform.position += transform.forward * speed * Time.deltaTime;
 		GetComponent<Rigidbody> ().transform.position += transform.forward * speed * Time.deltaTime;
 		fuel -= speed / speedPerFuel;
 	}
@@ -42,6 +44,7 @@ public class SpaceshipMotor : MonoBehaviour {
 		GetComponent<Rigidbody> ().MoveRotation ((GetComponent<Rigidbody>().rotation * deltaRotation));
 	}
 
+#region Get and Set
 	public float GetMaxSpeed(){
 		return maxSpeed;
 	}
@@ -52,6 +55,14 @@ public class SpaceshipMotor : MonoBehaviour {
 	
 	public float GetSpeed(){
 		return speed;
+	}
+
+	public float GetTurnSpeed(){
+		return turnSpeed;
+	}
+
+	public void SetTurnSpeed(float value){
+		turnSpeed = value;
 	}
 	
 	public void SetSpeed(float value){
@@ -73,4 +84,13 @@ public class SpaceshipMotor : MonoBehaviour {
 	public void SetAcceleration(float value){
 		acceleration = value;
 	}
+
+	public int GetCargoSpace(){
+		return cargoSpace;
+	}
+
+	public void SetCargoSpace(int value){
+		cargoSpace = value;
+	}
+#endregion
 }

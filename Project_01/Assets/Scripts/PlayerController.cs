@@ -5,25 +5,17 @@ public class PlayerController : MonoBehaviour {
 
 	public Vector3 desiredRotation;
 	float maxTurn = 15.0f, turnSpeed = 0.1f;
-	bool firstPerson = true;
 	bool onFoot = false;
 	Vector2 movement;
 
 	// Use this for initialization
 	void Start () {
-		GameObject.Find ("3ps_Camera").GetComponent<Camera> ().enabled = false;
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (!onFoot && name == "Player") {
-			if (Input.GetKeyDown (KeyCode.F1))
-				firstPerson = !firstPerson;
-			if (firstPerson) {
-				GameObject.Find ("3ps_Camera").GetComponent<Camera> ().enabled = false;
-			} else {
-				GameObject.Find ("3ps_Camera").GetComponent<Camera> ().enabled = true;
-			}
 			if (Input.GetKey (KeyCode.LeftShift)) {
 				GetComponent<SpaceshipMotor> ().Thrust (0.25f);
 			}

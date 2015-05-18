@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded(int level){
-		if (level == 1) {
+		if (level != 0) {
 			transform.position = new Vector3 (4807, 446, -2970);
 			this.enabled = true;
 			GetComponent<SpaceshipMotor>().enabled = true;
@@ -23,12 +23,13 @@ public class PlayerController : MonoBehaviour {
 			GameObject.Find ("CameraHolder").GetComponent<MouseLook> ().enabled = true;
 			GetComponent<SpaceshipMotor>().CalculateEngineSpeed(GameObject.Find("ShipMaster").GetComponent<ShipMaster>().engines);
 			GetComponent<SpaceshipMotor>().CalculateTurnSpeed(GameObject.Find("ShipMaster").GetComponent<ShipMaster>().wings);
+            GetComponent<SpaceshipMotor>().useGravity = true;
 		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		acceleration = GetComponent<SpaceshipMotor> ().GetAcceleration ();
+		acceleration = GetComponent<SpaceshipMotor> ().Acceleration;
 		if (!onFoot && name == "Player") {
 			if (Input.GetKey (KeyCode.LeftShift)) {
 				GetComponent<SpaceshipMotor> ().Thrust (acceleration);

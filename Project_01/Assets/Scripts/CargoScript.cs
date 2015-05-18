@@ -34,7 +34,7 @@ public class CargoScript : MonoBehaviour {
 			clothesString = "Clothes : N/A";
 		if (steel > 0 || spice > 0 || weaponParts > 0 || clothes > 0)
 			cargo = "Money = " + money.ToString() + "\n" + steelString + "\n" + spiceString + "\n" + weaponString + "\n" + clothesString + "\n" + "Current Cargo" + "\n"
-				+ cargoUsed + "/" + GetComponentInParent<SpaceshipMotor>().GetCargoSpace();
+				+ cargoUsed + "/" + GetComponentInParent<SpaceshipMotor>().CargoSpace;
 		else
 			cargo = "Money = " + money.ToString() + "\nCargo hold is empty.";
 		cargoUsed = steel + spice + weaponParts + clothes;

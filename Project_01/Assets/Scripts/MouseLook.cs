@@ -44,10 +44,10 @@ public class MouseLook : MonoBehaviour {
 					GetComponent<Camera> ().fieldOfView = lowFOV;
 				else
 					GetComponent<Camera>().fieldOfView = highFOV;
-				if(GetComponentInParent<SpaceshipMotor>().GetSpeed() > 0 && GetComponent<Camera>().fieldOfView == highFOV)
-					GetComponent<Camera>().fieldOfView = 60 + GetComponentInParent<SpaceshipMotor>().GetSpeed() / 15;
-				if(GetComponentInParent<SpaceshipMotor>().GetSpeed() > 0 && GetComponent<Camera>().fieldOfView == lowFOV)
-					GetComponent<Camera>().fieldOfView = 45 + GetComponentInParent<SpaceshipMotor>().GetSpeed() / 15;
+				if(GetComponentInParent<SpaceshipMotor>().Speed > 0 && GetComponent<Camera>().fieldOfView == highFOV)
+					GetComponent<Camera>().fieldOfView = 60 + GetComponentInParent<SpaceshipMotor>().Speed / 15;
+				if(GetComponentInParent<SpaceshipMotor>().Speed > 0 && GetComponent<Camera>().fieldOfView == lowFOV)
+					GetComponent<Camera>().fieldOfView = 45 + GetComponentInParent<SpaceshipMotor>().Speed / 15;
 			}
 		}
 	}

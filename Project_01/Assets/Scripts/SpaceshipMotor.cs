@@ -16,6 +16,7 @@ public class SpaceshipMotor : MonoBehaviour {
 	GameObject[] planets;
 	float gravity = 0.25f;
 	public float distance;
+    public bool useGravity = false;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +37,7 @@ public class SpaceshipMotor : MonoBehaviour {
 			fuel -= (speed / speedPerFuel);
 		if (speed < 0)
 			fuel -= (-speed / speedPerFuel);
-		if (Application.loadedLevel != 0) {
+		if (useGravity) {
 			for (int i = 0; i < planets.Length; i++) {
 				if (Vector3.Distance (planets [i].transform.position, transform.position) < planets [i].transform.localScale.x * 3) {
 					distance = Mathf.Lerp (0, 1, (planets [i].transform.localScale.x * 3 - Vector3.Distance (planets [i].transform.position, transform.position)) / (planets [i].transform.localScale.x * 5));
@@ -44,17 +45,31 @@ public class SpaceshipMotor : MonoBehaviour {
 				}
 			}
 		}
-	}
+    }
 
-	public void CalculateEngineSpeed(int engineLevel){
+    public void Thrust (float value) {
+        if (value > 0 && speed < maxSpeed)
+            speed += value;
+        if (value < 0 && speed > -maxSpeed / 3)
+            speed += value;
+    }
+
+    public void Rotate (Vector3 rotation) {
+        //		transform.Rotate (rotation);
+        Quaternion deltaRotation = Quaternion.Euler (rotation * turnSpeed * Time.deltaTime);
+        GetComponent<Rigidbody> ().MoveRotation ((GetComponent<Rigidbody> ().rotation * deltaRotation));
+    }
+
+#region Calculations
+    public void CalculateEngineSpeed(int engineLevel){
 		switch (engineLevel) {
 		case 0:
-			SetMaxSpeed(50);
-			SetAcceleration(0.1f);
+			MaxSpeed = 50;
+			Acceleration = 0.1f;
 			break;
 		case 1:
-			SetMaxSpeed(75);
-			SetAcceleration(0.25f);
+			MaxSpeed =75;
+			Acceleration = 0.25f;
 			break;
 		}
 	}
@@ -62,86 +77,54 @@ public class SpaceshipMotor : MonoBehaviour {
 	public void CalculateTurnSpeed(int wingLevel){
 		switch (wingLevel) {
 		case 0:
-			SetTurnSpeed(30);
+			TurnSpeed = 30;
 			break;
 		case 1:
-			SetTurnSpeed(45);
+			TurnSpeed = 45;
 			break;
 		}
-	}
-
-	public void Thrust(float value){
-		if(value > 0 && speed < maxSpeed)
-			speed += value;
-		if (value < 0 && speed > -maxSpeed / 3)
-			speed += value;
-	}
-
-	public void Rotate(Vector3 rotation){
-//		transform.Rotate (rotation);
-		Quaternion deltaRotation = Quaternion.Euler (rotation * turnSpeed * Time.deltaTime);
-		GetComponent<Rigidbody> ().MoveRotation ((GetComponent<Rigidbody>().rotation * deltaRotation));
-	}
+    }
+#endregion
 
 	public void ScanForPlanets(){
 		planets = GameObject.FindGameObjectsWithTag ("Planet");
 	}
 
 #region Get and Set
-	public float GetMaxSpeed(){
-		return maxSpeed;
-	}
 
-	public float GetGravity(){
-		return gravity;
-	}
+    public float MaxSpeed{
+        get { return maxSpeed;  }
+        set { maxSpeed = value; }
+    }
 
-	public void SetGravity(float value){
-		gravity = value;
-	}
+    public float Gravity{
+        get { return gravity; }
+        set { gravity = value; }
+    }
 
-	public void SetMaxSpeed(float value){
-		maxSpeed = value;
-	}
-	
-	public float GetSpeed(){
-		return speed;
-	}
+    public float Speed {
+        get { return speed; }
+        set { speed = value; }
+    }
 
-	public float GetTurnSpeed(){
-		return turnSpeed;
-	}
+    public float TurnSpeed {
+        get { return turnSpeed; }
+        set { turnSpeed = value; }
+    }
 
-	public void SetTurnSpeed(float value){
-		turnSpeed = value;
-	}
-	
-	public void SetSpeed(float value){
-		speed = value;
-	}
+    public int MaxFuel {
+        get { return maxFuel; }
+        set { maxFuel = value; }
+    }
 
-	public int GetMaxFuel(){
-		return maxFuel;
-	}
+    public float Acceleration {
+        get { return acceleration; }
+        set { acceleration = value; }
+    }
 
-	public void SetMaxFuel(int value){
-		maxFuel = value;
-	}
-
-	public float GetAcceleration(){
-		return acceleration;
-	}
-
-	public void SetAcceleration(float value){
-		acceleration = value;
-	}
-
-	public int GetCargoSpace(){
-		return cargoSpace;
-	}
-
-	public void SetCargoSpace(int value){
-		cargoSpace = value;
-	}
+    public int CargoSpace {
+        get { return cargoSpace; }
+        set { cargoSpace = value; }
+    }
 #endregion
 }

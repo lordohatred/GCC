@@ -1,1 +1,17 @@
 Vi går igenom detta någon gång när vi har tid, och lägger upp en plan på vad vi vill/ska göra :)
+
+	SOUNDS:
+Engine sounds, more than humming.
+
+	GAMEPLAY:
+Weapons need to be in the game.
+AI for other ships, friendly and otherwise.
+float uncontrollably when out of fuel?
+Some way to track waypoints on the Tac-Cam.
+Construct a real mercentilism system, not just random price, money and goods.
+More sectors and a way to traverse them.
+Change scale of sector, to reduce lag and improve ship to planet ratio.
+
+	ASSETS:
+Need to UVunwrap meshes.
+Create more placeholders.

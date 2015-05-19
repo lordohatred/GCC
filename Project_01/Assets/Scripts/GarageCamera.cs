@@ -36,6 +36,14 @@ public class GarageCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (shipParts == null)
+            for (int i = 0; i < shipParts.Length; i++) {
+                shipParts[i].GetComponent<Renderer> ().materials[0].color = Color.white;
+                shipParts[i].GetComponent<Renderer> ().materials[1].color = Color.white;
+                shipParts[i].GetComponent<Renderer> ().materials[2].color = Color.white;
+                if (shipParts[i].GetComponent<Renderer> ().materials.Length > 3)
+                    shipParts[i].GetComponent<Renderer> ().materials[3].color = Color.white;
+            }
 		Ray vray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit = new RaycastHit();
 		if(Physics.Raycast(vray, out hit)){
@@ -267,7 +275,7 @@ public class GarageCamera : MonoBehaviour {
 		}
 		if (canStart)
 			if (GUI.Button (new Rect (Screen.width / 1.2f, Screen.height / 1.35f, Screen.width / 8, Screen.height / 8), "Head out!")) {
-				Application.LoadLevel(1);
+				Application.LoadLevel(Application.loadedLevel + 1);
 			}
 	}
 }

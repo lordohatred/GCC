@@ -125,7 +125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1145436345
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,29 +157,29 @@ MonoBehaviour:
   maxPop: {x: 2000, y: 25}
   Country:
   - {fileID: 150036, guid: db425ad58ffa9b944a9e01d6d9a58501, type: 2}
-  - {fileID: 150036, guid: bfc9495725640344e9acae124f3d4908, type: 2}
-  - {fileID: 150036, guid: 7c4336cfaf4384d40911d139b3365038, type: 2}
-  - {fileID: 150036, guid: a3ae4de8fab781941b3a4d96681e2e7e, type: 2}
-  - {fileID: 150036, guid: e4b9b4cd138d2a546ae477b8a06b378a, type: 2}
-  - {fileID: 150036, guid: 456927852cd400d4baa3f1219dd42b52, type: 2}
-  - {fileID: 150036, guid: 1e66a59e989429d45adb0a3b66a8d8c7, type: 2}
-  - {fileID: 150036, guid: 39d8d01168059984fa375fa13c898cda, type: 2}
-  - {fileID: 150036, guid: de87e06c93d74944eb85de67038c0769, type: 2}
-  - {fileID: 150036, guid: 6463743763cfddb40bf14059821d6f1d, type: 2}
-  - {fileID: 150036, guid: 32d6feba9d7aed54b9addb98bdfe8335, type: 2}
-  - {fileID: 150036, guid: 701c2f95cb05957499f2f1911be0b6c2, type: 2}
-  - {fileID: 150036, guid: 740b9f3eacc97e144b096766d2fad8f2, type: 2}
-  - {fileID: 150036, guid: bb1d5559f64075a41b658ffef5506469, type: 2}
-  - {fileID: 150036, guid: 60c33e074ae4a6d42946f8b8f1891142, type: 2}
-  - {fileID: 150036, guid: 000967ea0e6bc144d874832ad0153809, type: 2}
-  - {fileID: 150036, guid: 5627488d652be3e4dafd663f0a8fc4c1, type: 2}
-  - {fileID: 150036, guid: a7bf7203496b1d7418293c297959f3dd, type: 2}
-  - {fileID: 150036, guid: afa7fa36dd574a345bbcc82c73668279, type: 2}
-  - {fileID: 150036, guid: d4f13b7b187f58d459f25fc42932fd1e, type: 2}
-  - {fileID: 150036, guid: 8c06ff0bca19f954693cb6154ee99c12, type: 2}
-  - {fileID: 150036, guid: c244e5fa710a990439122b6841ad8562, type: 2}
-  - {fileID: 150036, guid: 75239098d4c010b40a617eb18e2ea227, type: 2}
-  - {fileID: 150036, guid: 5ff63ea4417dc3248bc107e5131e7c40, type: 2}
+  - {fileID: 150036, guid: f7fe9d33b75fe02439048e5864935f52, type: 2}
+  - {fileID: 150036, guid: 8eeeb5e8395e316489aa0c6d589161a3, type: 2}
+  - {fileID: 150036, guid: 4925e8b74220fc444a7512651f92a851, type: 2}
+  - {fileID: 150036, guid: 5de48109ffc09e14bbaee42ba2c110b4, type: 2}
+  - {fileID: 150036, guid: 2d0442b6b79b2054fa3ac34e3f5936a9, type: 2}
+  - {fileID: 150036, guid: 7ac8cceb0b5ab9f4596a601160a75886, type: 2}
+  - {fileID: 150036, guid: 2193c4e64e2795546af2e1f7fefff32a, type: 2}
+  - {fileID: 150036, guid: e84a8137e2d30154e9e36415f7481b45, type: 2}
+  - {fileID: 150036, guid: 42cd2489efeec7240bd52c1a76dca28d, type: 2}
+  - {fileID: 150036, guid: 2c4fb2a5370b406448dcc0dcc05b4f31, type: 2}
+  - {fileID: 150036, guid: ccceb33bf7a3cd34ba6e3fd9558a74c0, type: 2}
+  - {fileID: 150036, guid: 74877b54edd4d99499b07a2a91b1f668, type: 2}
+  - {fileID: 150036, guid: dc8bbe4f9c4c2b34bbbc048fb0a3993a, type: 2}
+  - {fileID: 150036, guid: add5d5bd90b05e344afc41a92231f7fd, type: 2}
+  - {fileID: 150036, guid: 6bb795184cbb05247bba77e9aaa16551, type: 2}
+  - {fileID: 150036, guid: 13232af1f966938498b5bc8201a88233, type: 2}
+  - {fileID: 150036, guid: 4d9b5fbf7090e8d47bd185bc20ced098, type: 2}
+  - {fileID: 150036, guid: b223cdb9ea3f80e46979ea9ac8660ed3, type: 2}
+  - {fileID: 150036, guid: f2bb1f45165bffd489f7a4d9e76c1ac4, type: 2}
+  - {fileID: 150036, guid: ec320234b21a2034193dc4a3080a3eb3, type: 2}
+  - {fileID: 150036, guid: ca9776110dc8b68449140f8df47a8214, type: 2}
+  - {fileID: 150036, guid: ab13bb2b53f418849a3106b43c20c37a, type: 2}
+  - {fileID: 150036, guid: 0daa0cad1503d2740a25a2bc834eb21d, type: 2}
   pop: {fileID: 141160, guid: 45464c2c511574c45bb92b21c8982ede, type: 2}
   player: {fileID: 0}
   map:
@@ -196,101 +196,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
---- !u!1 &1543739172
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1543739177}
-  - 20: {fileID: 1543739176}
-  - 92: {fileID: 1543739175}
-  - 124: {fileID: 1543739174}
-  - 81: {fileID: 1543739173}
-  - 114: {fileID: 1543739178}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1543739173
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_Enabled: 1
---- !u!124 &1543739174
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_Enabled: 1
---- !u!92 &1543739175
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_Enabled: 1
---- !u!20 &1543739176
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
---- !u!4 &1543739177
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1543739178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1543739172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a41c4780fc3e344af27fb17ba3ffd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {x: 0, y: 0, z: 0}

@@ -30,7 +30,7 @@ public class MerchantScript : MonoBehaviour {
 		spicePrice = Random.Range (80, 122);
 		weaponPrice = Random.Range (30, 80);
 		clothesPrice = Random.Range (5, 50);
-		money = Random.Range (0, 250);
+		money = Random.Range (250, 1000);
 	}
 	
 	// Update is called once per frame
@@ -49,7 +49,7 @@ public class MerchantScript : MonoBehaviour {
 		if (other.name == "Player")
 			inRange = false;
 		GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().MaxSpeed = (50);
-		GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().Gravity = (0.25f);
+		GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().Gravity = (0.1f);
 	}
 
 	void ShowShop(int windowID){
@@ -131,14 +131,14 @@ public class MerchantScript : MonoBehaviour {
 		GUI.Label (new Rect (30, 220, 250, 25), "Weapon Parts are worth : " + weaponPrice.ToString ());
 		GUI.Label (new Rect (30, 250, 200, 25), "Clothes are worth : " + clothesPrice.ToString ());
 		if(GUI.Button(new Rect (30, 280, 250, 50), "Refuel for " + 
-		              ((GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().fuel) / 8).ToString("F0"))){
+		              ((GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8).ToString("F0"))){
 			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money >
-			   (GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().fuel) / 8){
+			   (GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8){
 
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().fuel = GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel;
+				GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel = GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel;
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 
-					(int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().fuel) / 8;
-				money += (int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().fuel) / 8;
+					(int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8;
+				money += (int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8;
 			}
 		}
 		if (GUI.Button (new Rect (30, 340, 250, 50), "Upgrade Acceleration for 1500")) {

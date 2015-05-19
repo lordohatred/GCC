@@ -1,17 +1,31 @@
-Vi går igenom detta någon gång när vi har tid, och lägger upp en plan på vad vi vill/ska göra :)
 
 	SOUNDS:
 Engine sounds, more than humming.
+Explosions.
+Missles firing.
+Plasma firing.
+Ambient ship sounds. // Oven
+Enviroment sounds for planet/spacestation.
 
 	GAMEPLAY:
+New interactable HUD.
 Weapons need to be in the game.
 AI for other ships, friendly and otherwise.
 float uncontrollably when out of fuel?
-Some way to track waypoints on the Tac-Cam.
 Construct a real mercentilism system, not just random price, money and goods.
-More sectors and a way to traverse them.
-Change scale of sector, to reduce lag and improve ship to planet ratio.
+More sectors and a way to traverse them. // Warpdrive
+Shields and HoldDamage.
+Landing on planets.
+Walking around on space station.
 
-	ASSETS:
-Need to UVunwrap meshes.
-Create more placeholders.
+	MODELS:
+Computers for HUD / cargohold.
+Fix meshes so they all have a 3 material mask.
+Planets.
+Spacestations.
+Ship parts - Need to figure out layout.
+Optimize existing models, Lowpoly ingame model - highpoly normalMap.
+
+	TEXTURES:
+Optimize all textures to 512x512, only normal and diff maps.
+Same textures for all masks of certain kind? // All details will come from same texture.

@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Maps/StartScreen.unity
   - enabled: 1
     path: Assets/Maps/WarGames.unity
+  - enabled: 1
+    path: Assets/Maps/WG_Multiplayer.unity

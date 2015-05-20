@@ -3,27 +3,46 @@ using System.Collections;
 
 public class SpaceshipMotor : MonoBehaviour {
 
-	public float speed;
+    ShipMaster ship;
+
+//UI and Gravity
 	public float distance;
     public bool useGravity = false;
 	public Vector3 curRot;
-
-	float acceleration = 0.1f;
-	float maxSpeed = 50;
-	float fuel;
-	float turnSpeed = 30;
-	float speedPerFuel = 100;
-	float gravity = 0.10f;
-	int maxFuel = 15000;
-	int cargoSpace = 25;
 	Vector3 prevPos;
-	GameObject[] planets;
+    GameObject[] planets;
+    float gravity;
+
+//Hull Levels
+    private int cockpit = -1;
+    private int wings = -1;
+    private int engines = -1;
+    private int cargo = 0;
+
+//Current Speed and Fuel
+	private float speed;
+	private float fuel;
+
+//Private MovementVariables
+    private float acceleration;
+    private int maxSpeed;
+    private int maxFuel;
+    private int maxCargo;
+    private int turnSpeed;
+    private int speedPerFuel;
 
 
 	void Start () {
+        ship = GameObject.Find("ShipMaster").GetComponent<ShipMaster>();
 		fuel = maxFuel;
 		ScanForPlanets ();
 	}
+
+    void OnLevelWasLoaded (int level) {
+        if (level != 0) {
+            Calculate ();
+        }
+    }
 	
 	void FixedUpdate () {
 		if (speed > maxSpeed)
@@ -60,43 +79,51 @@ public class SpaceshipMotor : MonoBehaviour {
         GetComponent<Rigidbody> ().MoveRotation (GetComponent<Rigidbody> ().rotation * deltaRotation);
     }
 
-#region Calculations
-    public void CalculateEngineSpeed(int engineLevel){
-		switch (engineLevel) {
-		case 0:
-			MaxSpeed = 50;
-			Acceleration = 0.1f;
-			break;
-		case 1:
-			MaxSpeed =75;
-			Acceleration = 0.25f;
-			break;
-		}
-	}
-
-	public void CalculateTurnSpeed(int wingLevel){
-		switch (wingLevel) {
-		case 0:
-			TurnSpeed = 30;
-			break;
-		case 1:
-			TurnSpeed = 45;
-			break;
-		}
-    }
-#endregion
-
 	public void ScanForPlanets(){
 		planets = GameObject.FindGameObjectsWithTag ("Planet");
 	}
 
-#region Get and Set
-
-    public float MaxSpeed{
-        get { return maxSpeed;  }
-        set { maxSpeed = value; }
+#region Calculations
+    void Calculate () {
+        CalculateMaxSpeed ();
+        CalculateMaxFuel ();
+        CalculateMaxCargo ();
+        CalculateTurnSpeed ();
+        CalculateAcceleration ();
+        CalculateFuelPerSec ();
+        CalculateGravity ();
     }
 
+    void CalculateMaxSpeed () {
+        maxSpeed = ship.MaxSpeed + (ship.MaxSpeed * EngineLevel) / 2;
+    }
+
+    void CalculateMaxFuel () {
+        maxFuel = ship.MaxFuel + (ship.MaxFuel * CockpitLevel) / 2;
+    }
+
+    void CalculateMaxCargo () {
+        maxCargo = ship.MaxCargo + (ship.MaxCargo * CargoLevel) / 2;
+    }
+
+    void CalculateTurnSpeed () {
+        turnSpeed = ship.TurnSpeed + (ship.TurnSpeed * WingLevel) / 2;
+    }
+
+    void CalculateAcceleration () {
+        acceleration = ship.Acceleration + (ship.Acceleration * EngineLevel) / 2;
+    }
+
+    void CalculateFuelPerSec () {
+        speedPerFuel = ship.FuelPerSec + (ship.FuelPerSec * CockpitLevel) / 2;
+    }
+
+    void CalculateGravity () {
+        gravity = ship.Gravity - (ship.Gravity * CockpitLevel) / 2;
+    }
+#endregion
+
+#region Get and Set
     public float Gravity{
         get { return gravity; }
         set { gravity = value; }
@@ -107,9 +134,34 @@ public class SpaceshipMotor : MonoBehaviour {
         set { speed = value; }
     }
 
-    public float TurnSpeed {
-        get { return turnSpeed; }
-        set { turnSpeed = value; }
+    public float Fuel {
+        get { return fuel; }
+        set { fuel = value; }
+    }
+
+    public int CockpitLevel {
+        get { return cockpit; }
+        set { cockpit = value; }
+    }
+
+    public int WingLevel {
+        get { return wings; }
+        set { wings = value; }
+    }
+
+    public int EngineLevel {
+        get { return engines; }
+        set { engines = value; }
+    }
+
+    public int CargoLevel {
+        get { return cargo; }
+        set { cargo = value; }
+    }
+
+    public int MaxSpeed {
+        get { return maxSpeed; }
+        set { maxSpeed = value; }
     }
 
     public int MaxFuel {
@@ -117,19 +169,24 @@ public class SpaceshipMotor : MonoBehaviour {
         set { maxFuel = value; }
     }
 
+    public int TurnSpeed {
+        get { return turnSpeed; }
+        set { turnSpeed = value; }
+    }
+
+    public int SpeedPerFuel {
+        get { return speedPerFuel; }
+        set { speedPerFuel = value; }
+    }
+
+    public int MaxCargo {
+        get { return maxCargo; }
+        set { maxCargo = value; }
+    }
+
     public float Acceleration {
         get { return acceleration; }
         set { acceleration = value; }
-    }
-
-    public int CargoSpace {
-        get { return cargoSpace; }
-        set { cargoSpace = value; }
-    }
-
-    public float Fuel {
-        get { return fuel; }
-        set { fuel = value; }
     }
 #endregion
 }

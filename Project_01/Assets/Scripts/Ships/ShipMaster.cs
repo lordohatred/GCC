@@ -4,22 +4,45 @@ using System.Collections;
 public class ShipMaster : MonoBehaviour {
 
     public GameObject player;
-	public int cockpit = -1;
-	public int wings = -1;
-	public int engines = -1;
+
+    private float acceleration = 0.2f;
+    private float gravity = 0.1f;
+    private int maxSpeed = 50;
+    private int maxFuel = 15000;
+    private int maxCargo = 30;
+    private int turnSpeed = 30;
+    private int fuelPerSpeed = 100;
 
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (this);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (GameObject.Find ("Player") == null) {
-            GameObject newPlayer;
-            newPlayer = Instantiate (player, new Vector3 (-14.98f, 6.22f, -4.08f), transform.rotation) as GameObject;
-            newPlayer.name = player.name;
-//            Rigidbody newPlayer = Instantiate (player, new Vector3 (-14.98f, 6.22f, -4.08f), transform.rotation) as Rigidbody;
-        }
-	}
+
+    public float Acceleration {
+        get { return acceleration; }
+    }
+
+    public float Gravity {
+        get { return gravity; }
+    }
+
+    public int MaxSpeed {
+        get { return maxSpeed; }
+    }
+
+    public int MaxFuel {
+        get { return maxFuel; }
+    }
+
+    public int MaxCargo {
+        get { return maxCargo; }
+    }
+
+    public int TurnSpeed {
+        get { return turnSpeed; }
+    }
+
+    public int FuelPerSec {
+        get { return fuelPerSpeed; }
+    }
 }

@@ -14,14 +14,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded(int level){
-		if (level != 0) {
+		if (level == 1) {
 			transform.position = new Vector3 (2000, 200, -1500);
 			this.enabled = true;
 			GetComponent<SpaceshipMotor>().enabled = true;
 			GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled = true;
 			GameObject.Find ("CameraHolder").GetComponent<MouseLook> ().enabled = true;
-			GetComponent<SpaceshipMotor>().CalculateEngineSpeed(GameObject.Find("ShipMaster").GetComponent<ShipMaster>().engines);
-			GetComponent<SpaceshipMotor>().CalculateTurnSpeed(GameObject.Find("ShipMaster").GetComponent<ShipMaster>().wings);
             GetComponent<SpaceshipMotor>().useGravity = true;
             GetComponent<SpaceshipMotor> ().ScanForPlanets ();
 		}

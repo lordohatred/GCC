@@ -16,13 +16,18 @@ public class GarageCamera : MonoBehaviour {
 	Material[] primMats;
 	bool canStart = false;
 	ShipMaster ship;
+    SpaceshipMotor motor;
+    PlayerController player;
 
 	// Use this for initialization
 	void Start () {
+		ship = GameObject.Find ("ShipMaster").GetComponent<ShipMaster> ();
+        motor = GameObject.Find ("Player").GetComponent<SpaceshipMotor> ();
+        player = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled = false;
 		GameObject.Find ("CameraHolder").GetComponent<MouseLook> ().enabled = false;
-		GameObject.Find ("Player").GetComponent<PlayerController> ().enabled = false;
-		GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().enabled = false;
+		player.enabled = false;
+		motor.enabled = false;
 		shipParts = GameObject.FindGameObjectsWithTag ("ShipParts");
 		for (int i = 0; i < shipParts.Length; i++) {
 			shipParts[i].GetComponent<Renderer>().materials[0].color = Color.white;
@@ -31,7 +36,6 @@ public class GarageCamera : MonoBehaviour {
 			if(shipParts[i].GetComponent<Renderer>().materials.Length > 3)
 				shipParts[i].GetComponent<Renderer>().materials[3].color = Color.white;
 		}
-		ship = GameObject.Find ("ShipMaster").GetComponent<ShipMaster> ();
 	}
 	
 	// Update is called once per frame
@@ -54,7 +58,7 @@ public class GarageCamera : MonoBehaviour {
 				}
 			}
 		}
-		if (ship.cockpit != -1 && ship.wings != -1 && ship.engines != -1)
+		if (motor.CockpitLevel != -1 && motor.WingLevel != -1 && motor.EngineLevel != -1)
 			canStart = true;
 	}
 

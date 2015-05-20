@@ -60,7 +60,7 @@ public class MerchantScript : MonoBehaviour {
 		GUI.Label (new Rect (30, 140, 140, 25), clothes.ToString() + "  Clothes  " + GameObject.Find("Cargo").GetComponent<CargoScript>().GetClothes().ToString());
 		if(GUI.Button(new Rect(160, 50, 100, 25), "Buy")){
 			if(steel > 0 && GameObject.Find("Cargo").GetComponent<CargoScript>().money > 0 &&
-					GameObject.Find("Cargo").GetComponent<CargoScript>().GetCargoUsed() < GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace){
+                    GameObject.Find ("Cargo").GetComponent<CargoScript> ().GetCargoUsed () < GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().MaxCargo) {
 				GameObject.Find("Cargo").GetComponent<CargoScript>().AddjustSteel(1);
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= steelPrice + 1;
 				steel--;
@@ -77,7 +77,7 @@ public class MerchantScript : MonoBehaviour {
 		}
 		if(GUI.Button(new Rect(160, 80, 100, 25), "Buy")){
 			if(spice > 0 && GameObject.Find("Cargo").GetComponent<CargoScript>().money > 0 &&
-					GameObject.Find("Cargo").GetComponent<CargoScript>().GetCargoUsed() < GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace){
+                    GameObject.Find ("Cargo").GetComponent<CargoScript> ().GetCargoUsed () < GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().MaxCargo) {
 				GameObject.Find("Cargo").GetComponent<CargoScript>().AddjustSpice(1);
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= spicePrice + 1;
 				spice--;
@@ -94,7 +94,7 @@ public class MerchantScript : MonoBehaviour {
 		}
 		if(GUI.Button(new Rect(160, 110, 100, 25), "Buy")){
 			if(weaponParts > 0 && GameObject.Find("Cargo").GetComponent<CargoScript>().money > 0 &&
-				   GameObject.Find("Cargo").GetComponent<CargoScript>().GetCargoUsed() < GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace){
+                   GameObject.Find ("Cargo").GetComponent<CargoScript> ().GetCargoUsed () < GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().MaxCargo) {
 				GameObject.Find("Cargo").GetComponent<CargoScript>().AddjustWeaponParts(1);
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= weaponPrice + 1;
 				weaponParts--;
@@ -111,7 +111,7 @@ public class MerchantScript : MonoBehaviour {
 		}
 		if(GUI.Button(new Rect(160, 140, 100, 25), "Buy")){
 			if(clothes > 0 && GameObject.Find("Cargo").GetComponent<CargoScript>().money > 0 &&
-					GameObject.Find("Cargo").GetComponent<CargoScript>().GetCargoUsed() < GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace){
+                    GameObject.Find ("Cargo").GetComponent<CargoScript> ().GetCargoUsed () < GameObject.Find ("Player").GetComponent<SpaceshipMotor> ().MaxCargo) {
 				GameObject.Find("Cargo").GetComponent<CargoScript>().AddjustClothes(1);
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= clothesPrice + 1;
 				clothes--;
@@ -139,36 +139,6 @@ public class MerchantScript : MonoBehaviour {
 				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 
 					(int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8;
 				money += (int)(GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel - GameObject.Find("Player").GetComponent<SpaceshipMotor>().Fuel) / 8;
-			}
-		}
-		if (GUI.Button (new Rect (30, 340, 250, 50), "Upgrade Acceleration for 1500")) {
-			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money > 1500){
-				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 1500;
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().Acceleration = (2.5f + GameObject.Find("Player").GetComponent<SpaceshipMotor>().Acceleration);
-			}
-		}
-		if (GUI.Button (new Rect (30, 400, 250, 50), "Upgrade Max Speed for 1500")) {
-			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money > 1500){
-				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 1500;
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().Speed = (25 + GameObject.Find("Player").GetComponent<SpaceshipMotor>().Acceleration);
-			}
-		}
-		if (GUI.Button (new Rect (30, 460, 250, 50), "Upgrade Max Fuel for 1500")) {
-			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money > 1500){
-				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 1500;
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel = (7500 + GameObject.Find("Player").GetComponent<SpaceshipMotor>().MaxFuel);
-			}
-		}
-		if (GUI.Button (new Rect (30, 520, 250, 50), "Upgrade Turn Speed for 1500")) {
-			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money > 1500){
-				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 1500;
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().TurnSpeed = (10 + GameObject.Find("Player").GetComponent<SpaceshipMotor>().TurnSpeed);
-			}
-		}
-		if (GUI.Button (new Rect (30, 580, 250, 50), "Upgrade Cargohold for 1500")) {
-			if(GameObject.Find("Cargo").GetComponent<CargoScript>().money > 1500){
-				GameObject.Find("Cargo").GetComponent<CargoScript>().money -= 1500;
-				GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace = (25 +GameObject.Find("Player").GetComponent<SpaceshipMotor>().CargoSpace);
 			}
 		}
 	}

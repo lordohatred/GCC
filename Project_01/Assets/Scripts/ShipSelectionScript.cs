@@ -8,10 +8,14 @@ public class ShipSelectionScript : MonoBehaviour {
 	bool showWings = false;
 	bool showEngines = false;
 	ShipMaster ship;
+    SpaceshipMotor motor;
+    PlayerController player;
 
 	// Use this for initialization
 	void Start () {
 		ship = GameObject.Find ("ShipMaster").GetComponent<ShipMaster> ();
+        motor = GameObject.Find ("Player").GetComponent<SpaceshipMotor> ();
+        player = GameObject.Find ("Player").GetComponent<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +60,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			GameObject.Find("CockpitLight_4").GetComponent<Light>().enabled = false;
 			isSelected = false;
 			showCockpits = false;
-			ship.cockpit = 0;
+			motor.CockpitLevel = 0;
 		}
 		if (GUI.Button (new Rect (250, 50, 200, 100), "Medium Cockpit")) {
 			GameObject.Find("Box001_MeshPart0").GetComponent<Renderer>().enabled = true;
@@ -74,7 +78,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			GameObject.Find("CockpitLight_4").GetComponent<Light>().enabled = true;
 			isSelected = false;
 			showCockpits = false;
-			ship.cockpit = 1;
+			motor.CockpitLevel = 1;
 		}
 		if (GUI.Button (new Rect (25, 300, 400, 100), "Close Window")) {
 			isSelected = false;
@@ -89,7 +93,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			this.GetComponent<Renderer>().enabled = false;
 			isSelected = false;
 			showWings = false;
-			ship.wings = 0;
+			motor.WingLevel = 0;
 		}
 		if (GUI.Button (new Rect (250, 50, 200, 100), "Medium Wings")) {
 			GameObject.Find("Modular_Wings_01").GetComponent<Renderer>().enabled = true;
@@ -97,7 +101,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			this.GetComponent<Renderer>().enabled = false;
 			isSelected = false;
 			showWings = false;
-			ship.wings = 1;
+			motor.WingLevel = 1;
 		}
 		if (GUI.Button (new Rect (25, 300, 400, 100), "Close Window")) {
 			isSelected = false;
@@ -112,7 +116,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			this.GetComponent<Renderer>().enabled = false;
 			isSelected = false;
 			showEngines = false;
-			ship.engines = 0;
+			motor.EngineLevel = 0;
 		}
 		if (GUI.Button (new Rect (250, 50, 200, 100), "Medium Engines")) {
 			GameObject.Find("Modular_Engines_02").GetComponent<Renderer>().enabled = true;
@@ -120,7 +124,7 @@ public class ShipSelectionScript : MonoBehaviour {
 			this.GetComponent<Renderer>().enabled = false;
 			isSelected = false;
 			showEngines = false;
-			ship.engines = 1;
+            motor.EngineLevel = 1;
 		}
 		if (GUI.Button (new Rect (25, 300, 400, 100), "Close Window")) {
 			isSelected = false;

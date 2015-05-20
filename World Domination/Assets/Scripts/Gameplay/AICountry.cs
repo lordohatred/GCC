@@ -54,9 +54,11 @@ public class AICountry : MonoBehaviour {
 	}
 
 	void FindNewTarget(){
-		possibleTargets = GameObject.FindGameObjectsWithTag ("Population");
-		whatTarget = Random.Range (0, possibleTargets.Length);
-		target = possibleTargets[whatTarget].transform.position;
+        if (!GetComponent<CountryMotor> ().isPlayer) {
+            possibleTargets = GameObject.FindGameObjectsWithTag ("Population");
+            whatTarget = Random.Range (0, possibleTargets.Length);
+            target = possibleTargets[whatTarget].transform.position;
+        }
 	}
 
 	public void SetDifficulty(int value){

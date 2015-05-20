@@ -36,6 +36,7 @@ GameObject:
   - 50: {fileID: 5044364}
   - 58: {fileID: 5802928}
   - 114: {fileID: 11499690}
+  - 114: {fileID: 11466872}
   m_Layer: 0
   m_Name: Country
   m_TagString: Country
@@ -253,6 +254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8992739a7be94b046889ccc5d82b7ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11466872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a51a1df87193b64a95a5c91b7c089dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,7 +297,7 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 22486560}
+  - {fileID: 11466872}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

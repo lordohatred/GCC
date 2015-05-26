@@ -14,7 +14,7 @@ public class MouseLook : MonoBehaviour {
         this.enabled = false;
     }
 
-	// Update is called once per frame
+
 	void FixedUpdate () {
 		if (Input.GetButtonDown ("FreeLook"))
 			freeLook = !freeLook;
